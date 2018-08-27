@@ -1,3 +1,7 @@
+/**
+* @flow
+*/
+
 import RNFetchBlob from 'rn-fetch-blob'
 
 let options = {
@@ -89,6 +93,7 @@ FilesystemStorage.clear = (
           if (error && callback) callback(error, false)
           if (removedKeys.length === keys.length && callback) callback(null, true)
         })
+      })
       return true
     }
 

@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 import { AWSAppSyncClient } from './client';
 import { reducer as cacheReducer, NORMALIZED_CACHE_KEY, METADATA_KEY } from './cache/index';
 import { reducer as offlineMetadataReducer, offlineEffect, discard } from './link/offline-link';
-import FilesystemStorage from './vendor/filesystem-storage';
+import FilesystemStorage from 'redux-persist-filesystem-storage';
 
 /**
  *
