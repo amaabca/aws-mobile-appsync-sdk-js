@@ -10,7 +10,7 @@
 
 package | version
 --- | ---
-aws-appsync | ![npm](https://img.shields.io/npm/v/aws-appsync.svg)
+ama-aws-appsync | ![npm](https://img.shields.io/npm/v/ama-aws-appsync.svg)
 aws-appsync-react | ![npm](https://img.shields.io/npm/v/aws-appsync-react.svg)
 
 
@@ -18,13 +18,21 @@ aws-appsync-react | ![npm](https://img.shields.io/npm/v/aws-appsync-react.svg)
 #### npm    
 
 ```
-npm install --save aws-appsync
+npm install --save ama-aws-appsync
 ```
 
 #### yarn    
-    
+
 ```
-yarn add aws-appsync
+yarn add ama-aws-appsync
+```
+
+## Linking
+
+This package relies on [`rn-fetch-blob`](https://github.com/joltup/rn-fetch-blob) to work with the filesystem. This dependency must be linked in your React Native build.
+
+```
+yarn run react-native link rn-fetch-blob
 ```
 
 ## Usage
@@ -258,7 +266,7 @@ const PostSubscription = gql`
       id
       name
     }
-  } 
+  }
 `
 
 class App extends React.Component {
@@ -314,7 +322,7 @@ const PostSubscription = gql`
       id
       name
     }
-  } 
+  }
 `
 
 class App extends React.Component {
