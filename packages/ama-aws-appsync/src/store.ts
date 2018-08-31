@@ -7,12 +7,13 @@ import thunk from 'redux-thunk';
 import { AWSAppSyncClient } from './client';
 import { reducer as cacheReducer, NORMALIZED_CACHE_KEY, METADATA_KEY } from './cache/index';
 import { reducer as offlineMetadataReducer, offlineEffect, discard } from './link/offline-link';
+import FilesystemStorage from 'redux-persist-filesystem-storage';
 
 /**
- * 
+ *
  * @param {() => AWSAppSyncClient} clientGetter
- * @param {Function} persistCallback 
- * @param {Function} conflictResolver 
+ * @param {Function} persistCallback
+ * @param {Function} conflictResolver
  */
 const newStore = (clientGetter = () => null, persistCallback = () => null, conflictResolver, dataIdFromObject) => {
     const store = createStore(
@@ -35,7 +36,8 @@ const newStore = (clientGetter = () => null, persistCallback = () => null, confl
                 ...offlineConfig,
                 persistCallback,
                 persistOptions: {
-                    whitelist: [NORMALIZED_CACHE_KEY, METADATA_KEY, 'offline']
+                    whitelist: [NORMALIZED_CACHE_KEY, METADATA_KEY, 'offline'],
+                    storage: FilesystemStorage,
                 },
                 effect: (effect, action) => offlineEffect(store, clientGetter(), effect, action),
                 discard: discard(conflictResolver),
